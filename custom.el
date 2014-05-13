@@ -1,3 +1,7 @@
+
+(setq prelude-whitespace nil)
+(setq prelude-guru nil)
+(setq plantuml-jar-path "/opt/plantuml/plantuml.jar")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -5,20 +9,18 @@
  ;; If there is more than one, they won't work right.
  '(ecb-auto-activate t)
  '(ecb-compile-window-height 6)
+ '(ecb-toggle-compile-window t)
  '(ecb-compile-window-temporally-enlarge (quote both))
- '(ecb-eshell-auto-activate t)
  '(ecb-eshell-buffer-sync nil)
  '(ecb-options-version "2.40")
  '(ecb-tip-of-the-day nil)
  '(ecb-windows-width 0.15)
- '(ede-project-directories (quote ("/home/git/msp7.0_vouc"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
+ '(ede-project-directories (quote ("/home/git/msp7.0_vouc")))
+ '(ecb-compile-window-height 6)
+ '(ecb-eshell-auto-activate t)
+ '(global-semantic-stickyfunc-mode 1)
+ '(global-semantic-decoration-mode 1)
+)
 (semantic-mode 1)
 (global-ede-mode 1)
 (require 'compile-dir)
@@ -35,10 +37,6 @@
 (global-set-key (kbd "C-:") 'goto-line)
 
 ;; Custom keybinding
-(add-hook 'c-mode-common-hook
-          (lambda()
-            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
-
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
@@ -53,13 +51,17 @@
   (if (eq (desktop-owner) (emacs-pid))
       (desktop-save desktop-dirname)))
 (add-hook 'auto-save-hook 'my-desktop-save)
-
+(setq global-semantic-sticky-func-mode t)
 (require 'eshell)
 (require 'em-smart)
 (setq eshell-where-to-jump 'begin)
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 (menu-bar-mode t)
-(ecb-activate t)
-(ecb-compile-window-height 6)
-(ecb-toggle-compile-window t)
+(ecb-activate)
+
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (local-set-key  (kbd "C-c w") 'ff-find-other-file)))
+
+
