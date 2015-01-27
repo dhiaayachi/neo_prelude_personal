@@ -82,7 +82,40 @@
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
-(setq helm-gtags-prefix-key "\C-cg")
+(setq helm-gtags-prefix-key "C-x c")
+
+(require 'helm)
+(require 'helm-config)
+(global-set-key (kbd "C-x c") 'helm-command-prefix)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+(when (executable-find "curl")
+  (setq helm-google-suggest-use-curl-p t))
+
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-autoresize-mode                  t ; AUTORESIZE helm window
+      helm-ff-file-name-history-use-recentf t)
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(when (executable-find "ack-grep")
+  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
+        helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match    t)
+(global-set-key (kbd "C-x c C-o") 'helm-occur)
+(global-set-key (kbd "C-x c C-a") 'helm-ack)
+
+(helm-mode 1)
+
+
 
 (require 'helm-gtags)
 
