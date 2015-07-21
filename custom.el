@@ -63,6 +63,14 @@
 (menu-bar-mode t)
 ;; (ecb-activate)
 
+(setq cc-other-file-alist
+      '(("\\.c"   (".h"))
+       ("\\.cpp"   (".h"))
+       ("\\.h"   (".c"".cpp"))))
+
+(setq ff-search-directories
+      '("." "../include" "../src" "../inc"))
+
 (add-hook 'c-mode-common-hook
           (lambda()
             (local-set-key  (kbd "C-c w") 'ff-find-other-file)))
