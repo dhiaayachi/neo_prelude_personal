@@ -8,7 +8,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ecb-auto-activate t)
- '(ecb-compile-window-height 6)
+ '(ecb-compile-window-height 12)
  '(ecb-toggle-compile-window t)
  '(ecb-compile-window-temporally-enlarge (quote both))
  '(ecb-eshell-buffer-sync nil)
@@ -20,7 +20,10 @@
  '(ecb-eshell-auto-activate t)
  '(global-semantic-stickyfunc-mode 1)
  '(global-semantic-decoration-mode 1)
+ '(setq ecb-show-sources-in-directories-buffer 'always)
 )
+(require 'ecb)
+(require 'ecb-autoloads)
 (semantic-mode 1)
 (global-ede-mode 1)
 (require 'compile-dir)
@@ -58,7 +61,7 @@
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 (menu-bar-mode t)
-(ecb-activate)
+;; (ecb-activate)
 
 (add-hook 'c-mode-common-hook
           (lambda()
@@ -147,3 +150,12 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+;; ecb key binding
+(global-set-key (kbd "C-;") 'ecb-show-ecb-windows)
+(global-set-key (kbd "C-:") 'ecb-hide-ecb-windows)
+(global-set-key (kbd "C-)") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-!") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-@") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-#") 'ecb-goto-window-methods)
+(global-set-key (kbd "C-$") 'ecb-goto-window-compilation)
