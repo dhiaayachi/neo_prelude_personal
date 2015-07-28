@@ -160,10 +160,12 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; ecb key binding
-(global-set-key (kbd "C-;") 'ecb-show-ecb-windows)
-(global-set-key (kbd "C-:") 'ecb-hide-ecb-windows)
+(global-set-key (kbd "C-:\"") 'ecb-show-ecb-windows)
+(global-set-key (kbd "C-:'") 'ecb-hide-ecb-windows)
 (global-set-key (kbd "C-)") 'ecb-goto-window-edit1)
 (global-set-key (kbd "C-!") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-@") 'ecb-goto-window-sources)
 (global-set-key (kbd "C-#") 'ecb-goto-window-methods)
 (global-set-key (kbd "C-$") 'ecb-goto-window-compilation)
+(setq tramp-chunksize 500)
+ (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
