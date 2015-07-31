@@ -8,22 +8,20 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ecb-auto-activate t)
- '(ecb-compile-window-height 12)
- '(ecb-toggle-compile-window t)
+ '(ecb-compile-window-height 6)
  '(ecb-compile-window-temporally-enlarge (quote both))
+ '(ecb-eshell-auto-activate t)
  '(ecb-eshell-buffer-sync nil)
  '(ecb-options-version "2.40")
  '(ecb-tip-of-the-day nil)
+ '(ecb-toggle-compile-window t)
  '(ecb-windows-width 0.15)
  '(ede-project-directories (quote ("/home/git/msp7.0_vouc")))
- '(ecb-compile-window-height 6)
- '(ecb-eshell-auto-activate t)
- '(global-semantic-stickyfunc-mode 1)
  '(global-semantic-decoration-mode 1)
- '(setq ecb-show-sources-in-directories-buffer 'always)
-)
+ '(global-semantic-stickyfunc-mode 1)
+ '(setq ecb-show-sources-in-directories-buffer t)
+ '(srecode-cpp-namespaces (quote ("std" "boost" "POCO" "poco"))))
 (require 'ecb)
-(require 'ecb-autoloads)
 (semantic-mode 1)
 (global-ede-mode 1)
 (require 'compile-dir)
@@ -160,8 +158,8 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; ecb key binding
-(global-set-key (kbd "C-:\"") 'ecb-show-ecb-windows)
-(global-set-key (kbd "C-:'") 'ecb-hide-ecb-windows)
+(global-set-key (kbd "M-]") 'ecb-show-ecb-windows)
+(global-set-key (kbd "M-[") 'ecb-hide-ecb-windows)
 (global-set-key (kbd "C-)") 'ecb-goto-window-edit1)
 (global-set-key (kbd "C-!") 'ecb-goto-window-directories)
 (global-set-key (kbd "C-@") 'ecb-goto-window-sources)
@@ -169,3 +167,9 @@
 (global-set-key (kbd "C-$") 'ecb-goto-window-compilation)
 (setq tramp-chunksize 500)
  (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
