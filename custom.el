@@ -67,7 +67,7 @@
        ("\\.h"   (".c"".cpp"))))
 
 (setq ff-search-directories
-      '("." "../include" "../src" "../inc"))
+      '("." "../include" "../src" "../inc" "./include" "./inc"))
 
 (add-hook 'c-mode-common-hook
           (lambda()
